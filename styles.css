@@ -1,0 +1,74 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background-color: #f0f5f9;
+  font-size: 1.6rem;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1a237e;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.city-card {
+  background: linear-gradient(45deg, #779ddc, transparent);
+  border-radius: .5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  padding: 2rem;
+  height: 20rem;
+  max-width: 15rem;
+  flex: 1 1 25rem;
+  transition: box-shadow 0.3s ease;
+
+}
+
+.city-card:hover {
+  box-shadow: 0 .8rem 1.7rem darkgrey;
+}
+
+.forecast {
+  margin-top: 2rem;
+  display: flex;
+  overflow-x: scroll;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.forecast-item {
+  background-color: #ffe082;
+  border-radius: .5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  text-align: center;
+}
+
+.forecast-heading {
+  text-align: center;
+  margin-top: 6rem;
+}
+
+.country-code {
+  font-size: 1.7rem;
+}
+
+.weather-condition {
+  font-size: 1.6rem;
+}
+
+.temperature {
+  font-size: 3rem;
+}
