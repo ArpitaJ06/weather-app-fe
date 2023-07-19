@@ -1,8 +1,8 @@
 const BASE_URL = "https://clumsy-worm-leotard.cyclic.app"
 
-async function fetchData(url, apiKey) {
+async function fetchData(url) {
     try {
-        const response = await fetch(`${BASE_URL}${url}?apiKey=${apiKey}`);
+        const response = await fetch(`${BASE_URL}${url}`);
         return await response.json();
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -23,7 +23,7 @@ function createCityCards(citiesData) {
             <p class="temperature">${weather.temperature}°C</p>
             <p class="weather-condition">${weather.condition}</p>
         `;
-        cityCard.addEventListener('click', () => showForecast(city.id, apiKey));
+        cityCard.addEventListener('click', () => showForecast(city.id));
         citiesContainer.appendChild(cityCard);
     });
 }
@@ -46,24 +46,19 @@ function createForecastItems(forecastData) {
 }
 
 // Function to show forecast for a selected city
-async function showForecast(cityId, apiKey) {
-    const forecastData = await fetchData(`/forecast/${cityId}/${apiKey}`);
+async function showForecast(cityId) {
+    const forecastData = await fetchData(`/forecast/${cityId}`);
     createForecastItems(forecastData.forecast);
 }
 
 // Function to fetch and display current weather data
-async function displayCurrentWeather(apiKey) {
-    const currentWeatherData = await fetchData(`/current-weather/${apiKey}`);
+async function displayCurrentWeather() {
+    const currentWeatherData = await fetchData(`/current-weather`);
     createCityCards(currentWeatherData);
     // Display forecast for the first city by default
     if (currentWeatherData.length > 0) {
-        showForecast(currentWeatherData[0].city.id, apiKey);
+        showForecast(currentWeatherData[0].city.id);
     }
 }
 
-const apiKey = prompt('Please enter your API key:');
-if (apiKey) {
-    displayCurrentWeather(apiKey);
-} else {
-    alert('API key is required to fetch weather data.');
-}
+displayCurrentWeather();
